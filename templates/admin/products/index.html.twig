@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Produits{% endblock %}
+
+{% block body %}
+     <section class="container">
+         <h1>Gérer les Produits</h1>
+        <a href="{{ path("admin_products_add") }}" class="btn btn-primary">Ajouter un Produit</a>
+     </section>
+
+    <section class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td> {{ product.id }}</td>
+                    <td> {{ product.name }}</td>
+                    <td> {{ product.relation }}</td>
+                    <td>
+                        <a href="{{ path("admin_products_delete", {id: product.id}) }}" class="btn btn-danger"><i class="bi bi-x"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </section>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+ <section class="container">
+    <h1>DashBoard</h1>
+</section>
+    <canvas id="categories" width="300" height="50"></canvas>
+    <canvas id="visitors" width="300" height="100"></canvas>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+    <script>
+        window.onload = function() {
+            let visitors = document.querySelector("#visitors")
+            let GraphVisitors = new Chart(visitors, {
+                type: "line",
+                data: {
+                    labels: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin"],
+                    datasets: [{
+                        label: "Visiteurs ce jour",
+                        data: [80, 23, 123, 200, 70, 45],
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                }
+            })
+        }
+    </script>
+{% endblock %}

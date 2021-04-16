@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GeekShop - Home !{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3">
+
+                {% for categorie in categories %}
+                <div class="list-group">
+                    <a href="#" class="list-group-item">{{ categorie.name }}</a>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- /.col-lg-3 -->
+
+            <div class="col-lg-9">
+
+
+                <div class="row">
+
+                    {% for product in products %}
+
+
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="{{ path("products_details", {slug: product.slug}) }}">{{ product.name }}</a>
+                                        </h4>
+                                        <h5>{{ product.price }} €</h5>
+                                        <p class="card-text">{{ product.description }}</p>
+                                    </div>
+                                    <a href={{ path("cart_add", {id: product.id}) }} class="btn btn-primary">Ajouter au panier</a>
+
+                                    <div class="card-footer">
+                                        <small class="text-muted">★ ★ ★ ★ ☆</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                    {% endfor %}
+                    </div>
+    </div>
+{% endblock %}
